@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+    <style>
+        div{
+            height:100px;
+        }
+        .bgOne{background:red;
+        }
+        .bgTwo{ background: #000; }
+        .fontSize{
+            font:33px "";
+            color:#fff;
+        }
+    </style>
+	<body>
+		<div id="box" >
+            <div v-bind:class="{bgOne:ok,fontSize:ok,bgTwo:!ok}">测试</div>
+            <button @click="changeBackground()">changeBackground</button>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+	 window.onload=function () {
+		var vm = new Vue({
+			el:"#box",
+			data:{
+				ok:true
+			},
+            methods:{
+                changeBackground:function () {
+                    this.ok = !this.ok;
+                }
+            }
+		})
+
+
+	 };
+	</script>
+</html>

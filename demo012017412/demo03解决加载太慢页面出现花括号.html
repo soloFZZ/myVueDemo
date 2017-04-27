@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			{{info}}<br>
+			<span v-text="info"></span> 解决出现加载页面的时候加载过慢导致页面上有{{info}}显示，可以用v-text 不过该方法的有不好的地方就是会吧标签里面的内容会先清除
+			<br>
+			输出标签效果
+			{{msg}}
+			<br>
+			<span v-html="msg"></span>如果数据里面又标签，并且实现标签的效果，比如img标签，实现显示图片的效果，用v-html实现
+
+			<div v-bind:id="id">
+				为某个标签绑定class，id或者src之类的使用v-bind:id="{{id}}"
+			</div>
+			<div :class="className">
+				绑定class
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+		var vm = new Vue({
+			el:"#box",
+			data:{
+				info:"text",
+				msg:'<h2>111</h2>',
+				id:"divId",
+				className:"divClass"
+			},
+			methods:{
+			}
+		})
+	</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+            <input type="text" v-model="msg">
+            {{msg}}<p>第一种监视的方法</p>
+            <button @click="changeMsg">点我</button>
+            <input type="text" v-model="newMsg">
+            {{newMsg}}
+            <p>第二种监视的方法</p>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+	    var vm = new Vue({
+	        el:"#box",
+            data:{
+	            msg:"watch监视的变量vm.的方式",
+                newMsg:"watch监视的变量new里面写的方式"
+            },
+            methods: {
+                changeMsg:function () {
+                    this.msg+="22"
+                }
+            },
+            computed:{
+            },
+            watch:{
+                watchNewMsg:function () {
+
+                }
+            }
+        });
+        //该方法不仅可以监视键盘事件，其他事件也可以监视 只要msg 的值发生了变化，那么就会出发watch函数
+		vm.$watch("msg",function(newValue,oldValue){
+            console.log("新值-------------"+newValue+"-------------旧值---------"+oldValue);
+        })
+	</script>
+</html>

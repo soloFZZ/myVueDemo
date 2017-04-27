@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box" >
+            {{msg | reverseMsg}}<br>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+	 window.onload=function () {
+         Vue.filter("reverseMsg",function(vle){
+             return vle.split("").reverse().join("");
+         });        //自定义的过滤器必须写在new Vue的上面
+		 var vm=new Vue({
+		     el:"#box",
+             data:{
+		         msg:"filter过滤器",
+                 msg2:"第二个"
+             }
+         });
+
+	 };
+	</script>
+</html>

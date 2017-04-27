@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+            <input type="text" v-model="search">
+            <ul>
+                <li v-for="item in addList" v-html="item"> </li>
+            </ul>
+            <input type="text" v-model="searchTwo" />
+            <ul>
+                <li v-for="item in addListTow" v-html="item"></li>
+            </ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+	    var vm = new Vue({
+	        el:"#box",
+            data:{
+	            inpCont:null,
+                listCont:["12","23","weqw","qwe","qweqw3","qweqw2"],
+                search:"",
+                arr:[],
+                searchTwo:"",
+            },
+            methods: {
+
+            },
+            computed:{
+                addList:function () {       //方法一
+                    this.arr=[];
+                    this.listCont.forEach(function(val){
+                        if(val.indexOf(this.search)>-1){
+                             this.arr.push(val)
+                        }
+                    }.bind(this));
+					return this.arr;
+                },
+                addListTow:function(){  //方法二
+                    var arr = [];
+                    this.listCont.forEach(function(val){
+                        if(val.indexOf(this.searchTwo)>-1){
+                            arr.push(val);
+                        }
+                    }.bind(this));
+                    return arr ;
+                }
+            }
+
+        })
+	</script>
+</html>

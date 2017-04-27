@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			
+			{{msg}}
+			<ul>
+				<li v-for="item in list">
+					{{item}}
+				</li>
+			</ul>
+			<table border="" cellspacing="" cellpadding="">
+				<tr><th>内容</th></tr>
+				<tr><td>姓名</td><td>年龄</td></tr>
+				<tr v-for="item in objList">
+					<td>{{item.name}}</td>
+					<td>{{item.age}}</td>
+				</tr>
+			</table>
+			<button v-on:click="getMsg">vue绑定方法</button>
+			<button @click="getMsgTwo">第二种绑定方式</button>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+		var vm = new Vue({
+			el:"#box",	//绑定dom节点的，选择元素
+			data:{	//负责存放数据
+				msg:'this is a message',
+				list:[1,2,3,4],
+				objList:[
+					{
+						name:"lif",
+						age:121
+					},
+					{
+						name:"lif",
+						age:122
+					},
+					{
+						name:"lif",
+						age:123  
+					}
+				]
+				
+			},
+			methods:{	//存储方法的地方
+				getMsg:function(){
+					console.log(this);
+				},
+				getMsgTwo:function(){
+					console.log(this.msg)
+				}
+			}
+			
+			
+			
+		})
+	</script>
+</html>
+ 

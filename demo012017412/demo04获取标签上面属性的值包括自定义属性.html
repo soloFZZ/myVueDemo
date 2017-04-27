@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			{{content}}
+			<button data-userName="userName" data-age="23"  goodsId="111" @click="getAttr($event)">点我</button>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+
+		var vm = new Vue({
+			el:"#box",
+			data:{
+				content:"我是\n谁谁谁"
+			},
+			methods:{
+				getAttr:function (e) {
+					console.log(e);
+					console.log(e.srcElement.attributes);
+					console.log(e.srcElement.attributes.goodsId.nodeValue);
+					console.log(e.srcElement.dataset)
+				}
+			}
+		})
+	</script>
+</html>

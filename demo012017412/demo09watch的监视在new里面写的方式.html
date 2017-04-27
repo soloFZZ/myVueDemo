@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			firstName:<input v-model="firstName" type="text"><br>
+			lastName: <input type="text" v-model="lastName">
+            <br>
+            {{funFallName()}}
+		</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+	    var vm = new Vue({
+	        el:"#box",
+            data:{
+	            firstName:"zhang",
+                lastName:"wang",
+                fallName:"",
+            },
+            methods: {
+                funFallName:function () {       //methods方法
+                    return this.firstName+this.lastName;
+                }
+            },
+            computed:{
+            },
+            watch:{
+              /*  firstName:function(newValue){  //方法一watch监视
+                    this.fallName = newValue+this.lastName;
+                },
+                lastName:function (newValue) {
+                    this.fallName = this.firstName+newValue;
+                }*/
+            }
+        });
+	</script>
+</html>

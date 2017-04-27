@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.hiddenClass{
+				display:none
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+			<input type="text" v-model='info'  /><span>{{info}}</span>
+			<table>
+				<tr>
+					<td>序号</td>
+					<td>姓名</td>
+					<td>年龄</td>
+					<td>性别</td>
+					<td>删除</td>
+					<td>操作</td>
+				</tr>
+				<tr v-for="(item,index) in peopleInfo">
+					<td>{{index}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.age}}</td>
+					<td>{{item.sex}}</td>
+					<td @click="deleteInfo(index)">删除</td>
+					<td @click="changeInfo(index)">修改</td>
+				</tr>
+			</table>
+			姓名：<input type="text" v-model="addPeople.name" /><br />
+			年龄<input type="text" v-model="addPeople.age" /><br />
+			性别<input type="text" v-model="addPeople.sex" /><br />
+			<input type="button" value="提交" @click="addPeopleInfo" />
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+		var vm = new Vue({
+			el:"#box",
+			data:{
+				info:"123",
+				addPeople:{},
+				infoIndex:-1,
+				peopleInfo:[
+					{
+						name:"三儿",
+						age:12,
+						sex:"男"
+					},
+					{
+						name:"三儿",
+						age:12,
+						sex:"男"
+					}
+				]
+			},
+			methods:{
+				addPeopleInfo:function(){
+					if(this.peopleInfo[this.infoIndex]){
+						this.peopleInfo[this.infoIndex] = this.addPeople;
+						this.infoIndex = -1;
+					}else{
+						this.peopleInfo.push(this.addPeople);
+					}
+					this.addPeople ={};
+				},
+				deleteInfo:function(index){
+					this.peopleInfo.splice(index,1)
+				},
+				changeInfo:function (index){
+					this.infoIndex = index;
+					this.addPeople = this.peopleInfo[index];
+				}
+			}
+		})
+	</script>
+</html>

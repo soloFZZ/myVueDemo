@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			{{info}}<br>
+			<button @click="reverse">点击</button>
+			<br>
+			{{info.split("").reverse().join("")}}<br>
+			<br>
+			{{c}}
+		</div>
+
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+		var vm = new Vue({
+			el:"#box",
+			data:{
+				a:3,
+				info:"string"
+			},
+			methods:{
+				reverse:function () {
+					this.info = this.info.split("").reverse().join("");
+				}	
+			},
+			computed:{
+				c:function () {
+					return this.a+3
+				}
+			}
+		})
+	</script>
+</html>

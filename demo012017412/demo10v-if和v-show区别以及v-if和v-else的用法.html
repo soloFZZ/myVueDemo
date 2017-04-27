@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+				<div v-if="isOk">123</div>
+				<div v-show="isOk">123</div>
+            <div><mark>
+                v-if和v-show的值如果是true是显示，如果是false是隐藏。区别是，
+                当值是false的时候，v-if这个dom节点都会消失，而v-show只是节点隐藏
+            </mark>
+            </div>
+            <button @click="changeIsOk()">改变</button>
+            <br>
+
+            <mark>v-if和v-else，，需要紧贴着写</mark>
+            <br>
+            <button @click="changeIsShow()">大小</button>
+            <div v-if="isShow>0.5" class="big">大于0.5</div>
+            <div v-else class="small">小于0.5</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+	   var vm = new Vue({
+	   	   el:"#box",
+           data:{
+	   	       isOk:true,
+               isShow:0
+           },
+           methods:{
+               changeIsOk:function () {
+                   this.isOk=this.isOk?false:true;
+                   console.log(this.isOk);
+               },
+               changeIsShow:function () {
+                   this.isShow = Math.random();
+               }
+           }
+	   })
+	</script>
+</html>

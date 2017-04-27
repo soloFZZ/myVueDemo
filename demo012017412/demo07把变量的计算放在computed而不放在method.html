@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+		<p>{{reseverMth()}}</p>
+		<p>{{reseverMth()}}</p>
+		变量放在了methods里面，每次的使用都会导致该函数被调用一次
+			<br>
+			<br>f
+		<p>{{reseverCom}}</p>   变量放在computed里面。每次的使用，如果该值没有发生变化，那么函数只会被调用一次
+		<p>{{reseverCom}}</p>
+
+			<button @click="btn()">change string</button>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+		var  vm = new Vue({
+			el:"#box",
+			data:{
+				string:"这是一个字符串"
+			},
+			methods:{	
+				reseverMth:function () {
+					return this.string.split("").reverse().join();
+				},
+                btn:function(){
+				    this.string="改变变量的值"
+                }
+			},
+			computed:{  //计算属性
+				reseverCom:function(){
+					return this.string.split("").reverse().join();//此处如果需要用这个计算的结果那么就需要return
+				}
+			}
+		})
+	</script>
+</html>
